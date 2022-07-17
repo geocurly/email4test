@@ -93,6 +93,7 @@ function getUsersForNotification(int $limit): array
     ) SELECT rfn.id, rfn.username, rfn.email, rfn.timezone, rfn.sub_id FROM ready_for_notification AS rfn
     SQL;
 
+    // Хорошо бы фильтровать сообщения которые приходят не в рабочее время для пользователей у которых указана timezone
     return \DB\exec($query, [$limit]);
 }
 
