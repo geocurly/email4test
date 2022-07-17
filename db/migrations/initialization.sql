@@ -6,7 +6,7 @@ CREATE TABLE subscriptions (
 );
 
 CREATE INDEX subscriptions_user_id_idx ON subscriptions (user_id);
-CREATE INDEX subscriptions_validts_idx ON subscriptions (validts);
+CREATE INDEX subscriptions_validts_idx ON subscriptions (validts) WHERE notified IS DISTINCT FROM TRUE;
 
 COMMENT ON TABLE subscriptions IS 'Таблица с подписками';
 COMMENT ON COLUMN subscriptions.validts IS 'Время окончания подписки в UTC';

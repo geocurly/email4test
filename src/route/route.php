@@ -7,10 +7,12 @@ namespace Route;
 const SEND = 'send_email';
 const CHECK = 'check_email';
 const NOT_FOUND = 'not_found';
+const VERIFY = 'verify';
 
 const AVAILABLE = [
     SEND,
     CHECK,
+    VERIFY,
 ];
 
 /**

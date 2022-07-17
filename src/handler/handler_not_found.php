@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Handler;
 
-function checkEmail(): string {
-    $content = <<<HTML
+function notFound(): string {
+    return <<<HTML
     <style>
         h1 {
             color:#333;
             text-align: center;
         }
     </style>
-    <h1>Check Email</h1>
+    <h1>Unknown method called</h1>
     HTML;
-
-    return $content;
 }
