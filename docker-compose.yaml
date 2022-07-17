@@ -1,0 +1,28 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./etc/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php
+  php:
+    image: php:8.1-fpm
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/app
+    links:
+      - db
+  db:
+    image: postgres:12
+    volumes:
+      - ./var/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: email4test
+      POSTGRES_USER: email4test
+      POSTGRES_DB: email4test
+    ports:
+      - "5432:5432"
