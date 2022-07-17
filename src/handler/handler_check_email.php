@@ -7,10 +7,10 @@ namespace Handler;
 use function DB\commit;
 
 const CHECK_COST_CENT = 10;
-const TIME_LIMIT = 60;
+const CHECK_TIME_LIMIT = 60;
 
 function checkEmail(): string {
-    set_time_limit(TIME_LIMIT);
+    set_time_limit(CHECK_TIME_LIMIT);
 
     $cost = CHECK_COST_CENT . "cent";
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
