@@ -9,11 +9,20 @@ services:
     links:
       - php
   php:
-    image: php:8.1-fpm
+    build: ./etc/
     ports:
       - "9000:9000"
     volumes:
       - .:/app
+      - ./var/log:/var/log
+    links:
+       - db
+    entrypoint: ["php-fpm"]
+  cron:
+    build: ./etc/
+    volumes:
+      - .:/app
+      - ./var/log:/var/log
     links:
       - db
   db:

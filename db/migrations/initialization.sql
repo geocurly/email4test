@@ -1,23 +1,25 @@
 CREATE TABLE subscriptions (
-    id BIGSERIAL,
+    id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
-    validts TIMESTAMP NOT NULL
+    validts TIMESTAMP NOT NULL,
+    notified BOOL
 );
 
 CREATE INDEX subscriptions_user_id_idx ON subscriptions (user_id);
+CREATE INDEX subscriptions_validts_idx ON subscriptions (validts);
 
 COMMENT ON TABLE subscriptions IS 'Таблица с подписками';
 COMMENT ON COLUMN subscriptions.validts IS 'Время окончания подписки в UTC';
 COMMENT ON COLUMN subscriptions.user_id IS 'Ссылка подписки на пользователя';
 
 CREATE TABLE users (
-    id BIGSERIAL,
+    id BIGSERIAL PRIMARY KEY,
     username TEXT NOT NULL,
-    email BIGINT,
+    email TEXT,
     timezone TEXT
 );
 
-CREATE INDEX users_email_idx ON users (username);
+CREATE INDEX users_email_idx ON users (email);
 
 COMMENT ON TABLE users IS 'Таблица с пользователями-владельцами подписки подписки';
 COMMENT ON COLUMN users.id IS 'Идентификатор пользователя';
