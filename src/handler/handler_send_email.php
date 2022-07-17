@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Handler;
 
 function sendEmail(): string {
+    set_time_limit(TIME_LIMIT);
     $content = <<<HTML
     <style>
         h1 {
